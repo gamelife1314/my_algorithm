@@ -14,12 +14,14 @@ class BigHeap(object):
         index = len(self.data) - 1
         r = self.data
         # 自下往上堆化
-        while index // 2 > 0 and r[index] > r[index // 2]:
-            r[index], r[index // 2] = r[index // 2], r[index]
-            index = index // 2
+        root = index // 2
+        while root > 0 and r[index] > r[root]:
+            r[index], r[root] = r[root], r[index]
+            index = root
+            root = index // 2
 
     def pop(self):
-        if len(self.data) <= 0:
+        if len(self.data) < 2:
             return None
         top = self.data[1]
         self.data[1] = self.data[-1]
@@ -33,11 +35,11 @@ class BigHeap(object):
         length = length or len(ref)
         # 从上往下进行堆化
         while True:
-            max_pos = index
-            if 2 * index < length and ref[index] < ref[2 * index]:
-                max_pos = 2 * index
-            if 2 * index + 1 < length and ref[max_pos] < ref[2 * index + 1]:
-                max_pos = 2 * index + 1
+            max_pos, left, right = index, 2 * index, 2 * index + 1
+            if left < length and ref[index] < ref[left]:
+                max_pos = left
+            if right < length and ref[max_pos] < ref[right]:
+                max_pos = right
             if max_pos == index:
                 break
             ref[index], ref[max_pos] = ref[max_pos], ref[index]
