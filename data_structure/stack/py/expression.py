@@ -16,7 +16,7 @@ class Stack:
     def __init__(self):
         self.data = []
 
-    def append(self, value):
+    def push(self, value):
         self.data.append(value)
 
     def pop(self):
@@ -50,16 +50,16 @@ def expression(expr: list):
         right_operand = operand.pop()
         left_operand = operand.pop()
         operator = operators.pop()
-        operand.append(cal[operator](left_operand, right_operand))
+        operand.push(cal[operator](left_operand, right_operand))
 
     while len(expr) > 0:
         char = expr.pop()
         if char not in priorities:
-            operand.append(char)
+            operand.push(char)
         else:
             operators_top = operators.top()
             if operators_top is None or priorities[char] > priorities[operators_top]:
-                operators.append(char)
+                operators.push(char)
             else:
                 do()
                 expr.append(char)

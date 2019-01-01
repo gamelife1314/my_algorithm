@@ -12,7 +12,7 @@ class Stack:
     def __init__(self):
         self.data = []
 
-    def append(self, value):
+    def push(self, value):
         self.data.append(value)
 
     def pop(self):
@@ -30,7 +30,7 @@ def check(expr):
     stack = Stack()
     for char in expr:
         if char in matches:
-            stack.append(char)
+            stack.push(char)
         else:
             top = stack.pop()
             if top is None or matches[top] != char:

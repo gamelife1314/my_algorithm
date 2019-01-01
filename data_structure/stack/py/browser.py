@@ -6,7 +6,7 @@ class Stack:
     def __init__(self):
         self.data = []
 
-    def append(self, value):
+    def push(self, value):
         self.data.append(value)
 
     def pop(self):
@@ -26,16 +26,16 @@ class Browser:
 
     def open(self, page):
         self.y.empty()
-        self.x.append(page)
+        self.x.push(page)
 
     def back(self):
         top = self.x.pop()
         if top is not None:
-            self.y.append(top)
+            self.y.push(top)
         return top
 
     def move(self):
         top = self.y.pop()
         if top is not None:
-            self.x.append(top)
+            self.x.push(top)
         return top

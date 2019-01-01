@@ -14,7 +14,7 @@ class Stack:
     def __init__(self):
         self.__data = []
 
-    def append(self, value):
+    def push(self, value):
         self.__data.append(value)
 
     def pop(self):
