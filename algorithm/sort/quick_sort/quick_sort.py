@@ -17,6 +17,8 @@ def quick_sort(items: List[int]) -> List[int]:
 
 def recursion(items: List[int], low: int, high: int):
     if low < high:
+        k = randint(low, high)
+        items[k], items[low] = items[low], items[k]
         point = partition(items, low, high)
         recursion(items, low, point - 1)
         recursion(items, point + 1, high)
