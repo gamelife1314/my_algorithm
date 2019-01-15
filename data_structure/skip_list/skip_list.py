@@ -91,7 +91,7 @@ class SkipList(object):
         while p is not None:
             p.next.prev = p.prev
             p.prev.next = p.next
-            p = p.abovev
+            p = p.above
 
     def sorted(self):
         p = self.start
