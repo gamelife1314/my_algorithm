@@ -7,10 +7,6 @@ import (
 	"time"
 )
 
-func init() {
-	rand.Seed(time.Now().UnixNano())
-}
-
 func compareIntSlice(items1, items2 []int) bool {
 	length := len(items2)
 	if len(items1) != length {
@@ -26,7 +22,8 @@ func compareIntSlice(items1, items2 []int) bool {
 
 func TestSort(t *testing.T) {
 	for i := 0; i < 100; i++ {
-		length := rand.Intn(100)
+		rand.Seed(time.Now().UnixNano())
+		length := rand.Intn(10000)
 		if length > 0 {
 			t.Logf("数组长度是 %d", length)
 			nums := make([]int, length)
@@ -39,7 +36,7 @@ func TestSort(t *testing.T) {
 				t.Fatalf("这里不应该有错误")
 			}
 			sort.Ints(nums)
-			Sort(numsCopy)
+			QuickSort(numsCopy)
 			if !compareIntSlice(numsCopy, nums) {
 				t.Fatalf("两个数组应该是相等的才对")
 			}
