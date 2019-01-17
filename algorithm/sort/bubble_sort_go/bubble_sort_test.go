@@ -23,7 +23,7 @@ func compareIntSlice(items1, items2 []int) bool {
 func TestBubbleSort(t *testing.T) {
 	for i := 0; i < 100; i++ {
 		rand.Seed(time.Now().UnixNano())
-		length := rand.Intn(100)
+		length := rand.Intn(1000)
 		if length > 0 {
 			t.Logf("数组长度是 %d", length)
 			nums := make([]int, length)
