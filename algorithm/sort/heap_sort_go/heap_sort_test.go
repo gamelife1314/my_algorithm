@@ -1,4 +1,4 @@
-package quick_sort_go
+package heap_sort_go
 
 import (
 	"math/rand"
@@ -20,15 +20,15 @@ func compareIntSlice(items1, items2 []int) bool {
 	return true
 }
 
-func TestSort(t *testing.T) {
-	for i := 0; i < 100; i++ {
+func TestHeapSort(t *testing.T) {
+	for i := 0; i < 1000; i++ {
 		rand.Seed(time.Now().UnixNano())
-		length := rand.Intn(10000)
+		length := rand.Intn(400)
 		if length > 0 {
 			t.Logf("数组长度是 %d", length)
 			nums := make([]int, length)
 			for j := 0; j < length; j++ {
-				nums[j] = rand.Intn(100000)
+				nums[j] = rand.Intn(20)
 			}
 			numsCopy := make([]int, length)
 			copy(numsCopy, nums)
@@ -36,7 +36,7 @@ func TestSort(t *testing.T) {
 				t.Fatalf("这里不应该有错误")
 			}
 			sort.Ints(nums)
-			QuickSort(numsCopy)
+			HeapSort(numsCopy)
 			if !compareIntSlice(numsCopy, nums) {
 				t.Fatalf("两个数组应该是相等的才对")
 			}

@@ -1,4 +1,4 @@
-package quick_sort_go
+package selection_sort_go
 
 import (
 	"math/rand"
@@ -36,7 +36,7 @@ func TestSort(t *testing.T) {
 				t.Fatalf("这里不应该有错误")
 			}
 			sort.Ints(nums)
-			QuickSort(numsCopy)
+			SelectionSort(numsCopy)
 			if !compareIntSlice(numsCopy, nums) {
 				t.Fatalf("两个数组应该是相等的才对")
 			}

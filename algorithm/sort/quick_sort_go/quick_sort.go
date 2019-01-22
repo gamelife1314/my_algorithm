@@ -1,6 +1,6 @@
 package quick_sort_go
 
-func Sort(nums []int) []int {
+func QuickSort(nums []int) []int {
 	recursion(nums, 0, len(nums)-1)
 	return nums
 }
