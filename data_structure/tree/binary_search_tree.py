@@ -20,7 +20,7 @@ class TreeNode(object):
 
 class BinarySearchTree(object):
 
-    def __init__(self, root: Optional[TreeNode]=None):
+    def __init__(self, root: Optional[TreeNode] = None):
         self.root = root
 
     def find(self, key: int) -> Optional[TreeNode]:
