@@ -53,13 +53,13 @@ class Graph:
         visited = [False] * self.num_vertices
         prev = [None] * self.num_vertices
 
-        def _dfs(from_vetex) -> None:
-            visited[from_vetex] = True
-            if from_vetex == t:
+        def _dfs(from_vertex) -> None:
+            visited[from_vertex] = True
+            if from_vertex == t:
                 return
-            for neighbour in self.adjacency[from_vetex]:
+            for neighbour in self.adjacency[from_vertex]:
                 if not visited[neighbour]:
-                    prev[neighbour] = from_vetex
+                    prev[neighbour] = from_vertex
                     _dfs(neighbour)
         _dfs(s)
         print("->".join(self.__generate_path(s, t, prev)))
