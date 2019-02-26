@@ -34,7 +34,7 @@ class CountPath(object):
         for row in range(self.row - 1, -1, -1):
             for col in range(self.col - 1, -1, -1):
 
-                if self.grid[row][col] == 1:
+                if self.grid[row][col] == 1 or (row, col) == end:
                     states[row][col] = 0
                     continue
 
@@ -43,17 +43,11 @@ class CountPath(object):
                     continue
 
                 if row + 1 >= self.row:
-                    if col + 1 < self.col:
-                        states[row][col] = states[row][col + 1]
-                    else:
-                        states[row][col] = 0
+                    states[row][col] = states[row][col + 1]
                     continue
 
                 if col + 1 >= self.col:
-                    if row + 1 < self.row:
-                        states[row][col] = states[row + 1][col]
-                    else:
-                        states[row][col] = 0
+                    states[row][col] = states[row + 1][col]
                     continue
 
                 states[row][col] = states[row][col + 1] + states[row + 1][col]
