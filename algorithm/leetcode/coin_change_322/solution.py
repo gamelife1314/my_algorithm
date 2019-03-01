@@ -10,25 +10,15 @@ from typing import List
 
 class Solution:
 
-    num = 0
-
     def coinChange(self, coins: List[int], amount: int) -> int:
-        self.recursion(coins, amount)
-        return self.num
-
-    def recursion(self, coins: List[int], amount: int):
-        print(coins, amount)
-        if not coins:
-            if amount > 0:
-                self.num = -1
-            return
-        max_coin = max(coins)
-        tmp = amount // max_coin
-        self.num += tmp
-        coins.remove(max_coin)
-        self.recursion(coins, amount - tmp * max_coin)
+        max_ = amount + 1
+        states = [max_] * (amount + 1)
+        states[0] = 0
+        for i in range(1, amount + 1):
+            states[i] = min([states[i - coin] + 1 for coin in coins if coin <= i] + [states[i]])
+        return states[amount] if states[amount] <= amount else -1
 
 
 if __name__ == '__main__':
     s = Solution()
-    print(s.coinChange([186, 419, 83, 408], 6249))
+    print(s.coinChange([1], 11))

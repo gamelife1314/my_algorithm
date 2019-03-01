@@ -33,7 +33,7 @@ class Knapsack(object):
 
             # 放第 i 个物品
             for j in range(self.wl - self.weights[i] + 1):
-                if states[i - 1][j] > 0:
+                if states[i - 1][j] >= 0:
                     v = states[i - 1][j] + self.values[i]
                     if v > states[i][j + self.weights[i]]:
                         states[i][j + self.weights[i]] = v
