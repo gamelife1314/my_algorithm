@@ -12,7 +12,7 @@ class Solution:
 
     def coinChange(self, coins: List[int], amount: int) -> int:
         max_ = amount + 1
-        states = [max_] * (amount + 1)
+        states = [max_] * max_
         states[0] = 0
         for i in range(1, amount + 1):
             states[i] = min([states[i - coin] + 1 for coin in coins if coin <= i] + [states[i]])
@@ -21,4 +21,4 @@ class Solution:
 
 if __name__ == '__main__':
     s = Solution()
-    print(s.coinChange([1], 11))
+    print(s.coinChange([1, 2, 5], 11))
